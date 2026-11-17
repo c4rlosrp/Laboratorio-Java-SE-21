@@ -1,6 +1,7 @@
 package net.carlos.app;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * @author manana
@@ -68,5 +69,30 @@ public class Videogame {
 
     public void setRanking(double ranking) {
         this.ranking = ranking;
+    }
+
+    @Override
+    public String toString() {
+        return "Videogame{" +
+                "title='" + title + '\'' +
+                ", autor='" + autor + '\'' +
+                ", genre=" + genre +
+                ", espacio=" + espacio +
+                ", fecha=" + fecha +
+                ", ranking=" + ranking +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if (o instanceof Videogame videogame)
+            return Objects.equals(title, videogame.title) && Objects.equals(autor, videogame.autor) && genre == videogame.genre && Objects.equals(fecha, videogame.fecha);
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, autor, genre, fecha);
     }
 }

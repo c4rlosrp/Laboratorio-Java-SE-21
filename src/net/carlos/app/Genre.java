@@ -4,11 +4,11 @@ package net.carlos.app;
  * @author manana
  **/
 public enum Genre {
-    Roguelike,
-    hackAndSlash,
-    metroidvania,
-    arcade,
-    football,
+    ROGUELIKE,
+    HACK_AND_SLASH,
+    METROIDVANIA,
+    ARCADE,
+    FOOTBALL,
     RPG,
-    platforms
+    PLATFORMS
 }
