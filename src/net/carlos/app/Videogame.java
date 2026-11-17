@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * @author manana
  **/
-public class Videogame {
+public class Videogame implements Comparable<Videogame> {
 
     private String title, autor;
     private Genre genre;
@@ -94,5 +94,14 @@ public class Videogame {
     @Override
     public int hashCode() {
         return Objects.hash(title, autor, genre, fecha);
+    }
+
+    @Override
+    public int compareTo(Videogame o) {
+        return (this.getTitle().compareTo(o.getTitle()) == 0) ?
+             (this.getAutor().compareTo(o.getAutor()) != 0) ?
+                    this.getAutor().compareTo(o.getAutor()) :
+                    this.getFecha().getYear() - o.getFecha().getYear() :
+                this.getTitle().compareTo(o.getTitle());
     }
 }

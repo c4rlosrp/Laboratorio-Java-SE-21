@@ -1,10 +1,7 @@
 package net.carlos.app;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author manana
@@ -12,24 +9,44 @@ import java.util.Set;
 public class Main {
 
     static List<Videogame> videogameList = new ArrayList<>();
-    static Set<Videogame> videogameSet = new HashSet<>();
+    static Set<Videogame> videogameSet = new TreeSet<>();
 
     public static void main(String[] args) {
-        Videogame v1 = new Videogame("Cyberpunk 2077", "Red CD Project", Genre.RPG, 60, LocalDate.of(2020, 10, 12), 7.8);
+        Videogame v1 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 50, LocalDate.of(2020, 10, 12), 7.8);
+        Videogame v2 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 60, LocalDate.of(2024, 10, 12), 7.8);
+        Videogame v3 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 68, LocalDate.of(2026, 10, 12), 7.8);
+        Videogame v4 = new Videogame("Cyberpunk 2077", "CD Projekt (pero evil)", Genre.RPG, 68, LocalDate.of(2026, 10, 12), 7.8);
 
-//        catalog.forEach(System.out::println);
+        videogameList.sort(new Comparator<Videogame>() {
+            @Override
+            public int compare(Videogame o1, Videogame o2) {
+                return (int) (o2.getRanking() * 10) - (int) (o1.getRanking() * 10);
+            }
+        });
+        videogameList.forEach(System.out::println);
 //        videogameList.stream()
 //                .limit(10)
 //                .forEach(videogame -> System.out.println(videogame.getTitle()));
 
-        videogameSet.add(v1);
-        videogameSet.add(v1);
-        videogameSet.stream()
-                .forEach(videogame -> System.out.println(videogame.getTitle() + " " + videogame.hashCode()));
+//        videogameSet.add(v1);
+//        videogameSet.add(v2);
+//        videogameSet.add(v3);
+//        List<Videogame> videogameListSet = new ArrayList<>();
+//        videogameListSet.addAll(videogameSet);
+//        videogameListSet.add(v4);
+//
+        //Collections.sort(videogameListSet);
+//
+//        videogameListSet.sort(Comparator.comparing((Videogame v) -> v.getEspacio()).reversed());
+//
+//        videogameListSet.forEach(videogame -> System.out.println(videogame.toString()));
+
+//        videogameSet.stream()
+//                .forEach(videogame -> System.out.println(videogame.getTitle() + " " + videogame.hashCode()));
     }
 
     static {
-        Videogame v1 = new Videogame("Cyberpunk 2077", "Red CD Project", Genre.RPG, 60, LocalDate.of(2020, 10, 12), 7.8);
+        Videogame v1 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 60, LocalDate.of(2020, 10, 12), 7.8);
         Videogame v2 = new Videogame("Captain Tsubasa: World Fighters", "Bandai", Genre.FOOTBALL, 50, LocalDate.of(2026, 8, 20), 6.7);
         Videogame v3 = new Videogame("Castlevania Belmont Curse", "KONAMI", Genre.METROIDVANIA, 28, LocalDate.of(2026, 10, 19), 8.1);
         Videogame v4 = new Videogame("Inazuma eleven Go", "Level5", Genre.FOOTBALL, 3, LocalDate.of(2012, 7, 14), 8.3);
@@ -105,7 +122,7 @@ public class Main {
         Videogame v60 = new Videogame("Bubsy 3D", "Eidetic", Genre.PLATFORMS, 1, LocalDate.of(1996, 11, 25), 0.8);
         Videogame v61 = new Videogame("Rayman Legends", "Ubisoft Montpellier", Genre.PLATFORMS, 11, LocalDate.of(2013, 8, 29), 8.6);
 
-        videogameList = List.of(
+        videogameList.addAll(List.of(
                 v1, v2, v3, v4, v5, v6, v7, v8, v9, v10,
                 v11, v12, v13, v14, v15, v16, v17, v18, v19, v20,
                 v21, v22, v23, v24, v25, v26, v27, v28, v29, v30,
@@ -113,7 +130,7 @@ public class Main {
                 v41, v42, v43, v44, v45, v46, v47, v48, v49, v50,
                 v51, v52, v53, v54, v55, v56, v57, v58, v59, v60,
                 v61
-        );
+        ));
 
         videogameSet.addAll(Set.of(v1, v2, v3, v4, v5, v6, v7, v8, v9, v10));
 
