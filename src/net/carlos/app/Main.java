@@ -17,32 +17,31 @@ public class Main {
         Videogame v3 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 68, LocalDate.of(2026, 10, 12), 7.8);
         Videogame v4 = new Videogame("Cyberpunk 2077", "CD Projekt (pero evil)", Genre.RPG, 68, LocalDate.of(2026, 10, 12), 7.8);
 
-        videogameList.sort(new Comparator<Videogame>() {
-            @Override
-            public int compare(Videogame o1, Videogame o2) {
-                return (int) (o2.getRanking() * 10) - (int) (o1.getRanking() * 10);
+//        videogameList.sort(new Comparator<Videogame>() {
+//            @Override
+//            public int compare(Videogame o1, Videogame o2) {
+//                return (int) (o2.getRanking() * 10) - (int) (o1.getRanking() * 10);
+//            }
+//        });
+//        videogameList.forEach(System.out::println);
+//
+//        for (Videogame videogame: videogameList){
+//            if (videogame.getTitle().equals("Cyberpunk 2077")){
+//                videogameList.remove(videogame);
+//            }
+//        }
+
+        Iterator<Videogame> it = videogameList.iterator();
+        while(it.hasNext()){
+            Videogame v = it.next();
+            if(v.getTitle().equals("Cyberpunk 2077")){
+                it.remove();
+                break;
             }
-        });
-        videogameList.forEach(System.out::println);
-//        videogameList.stream()
-//                .limit(10)
-//                .forEach(videogame -> System.out.println(videogame.getTitle()));
+        }
 
-//        videogameSet.add(v1);
-//        videogameSet.add(v2);
-//        videogameSet.add(v3);
-//        List<Videogame> videogameListSet = new ArrayList<>();
-//        videogameListSet.addAll(videogameSet);
-//        videogameListSet.add(v4);
-//
-        //Collections.sort(videogameListSet);
-//
-//        videogameListSet.sort(Comparator.comparing((Videogame v) -> v.getEspacio()).reversed());
-//
-//        videogameListSet.forEach(videogame -> System.out.println(videogame.toString()));
+        System.out.println(videogameList.get(0));
 
-//        videogameSet.stream()
-//                .forEach(videogame -> System.out.println(videogame.getTitle() + " " + videogame.hashCode()));
     }
 
     static {
