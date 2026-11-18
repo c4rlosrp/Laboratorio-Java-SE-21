@@ -11,7 +11,48 @@ public class Main {
     static List<Videogame> videogameList = new ArrayList<>();
     static Set<Videogame> videogameSet = new TreeSet<>();
 
+    final class Prueba extends Main {
+
+
+    }
+
+    static class PruebaEstatica{
+        static Set<Videogame> videogameSet = new TreeSet<>();
+
+
+        void m(){
+
+            final int n = 0;
+
+            class mAnidada{
+                {
+                    System.out.println(n);
+                }
+            }
+            n++;
+        }
+    }
+
+
+
+
     public static void main(String[] args) {
+
+        Main.Prueba obj1 = new Main().new Prueba();
+        Main.PruebaEstatica obj4 = new Main.PruebaEstatica();
+        Main obj2 = new Main();
+        Main.Prueba obj3 = obj2.new Prueba();
+
+
+
+
+
+
+
+
+
+
+
         Videogame v1 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 50, LocalDate.of(2020, 10, 12), 7.8);
         Videogame v2 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 60, LocalDate.of(2024, 10, 12), 7.8);
         Videogame v3 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 68, LocalDate.of(2026, 10, 12), 7.8);
@@ -40,7 +81,12 @@ public class Main {
             }
         }
 
-        System.out.println(videogameList.get(0));
+
+//        System.out.println(videogameList.get(0));
+
+        for (int i = 0,  j = 10; i < 10 && j > 0; i++, j--) {  //buble infinito ( si quitas un ; devolvería error)
+            System.out.println(i + " " + j);
+        }
 
     }
 
