@@ -11,42 +11,20 @@ public class Main {
     static List<Videogame> videogameList = new ArrayList<>();
     static Set<Videogame> videogameSet = new TreeSet<>();
 
-    final class Prueba extends Main {
-
-
-    }
-
-    static class PruebaEstatica{
-        static Set<Videogame> videogameSet = new TreeSet<>();
-
-
-        void m(){
-
-            final int n = 0;
-
-            class mAnidada{
-                {
-                    System.out.println(n);
-                }
-            }
-            n++;
-        }
-    }
-
-
-
-
     public static void main(String[] args) {
 
-        Main.Prueba obj1 = new Main().new Prueba();
-        Main.PruebaEstatica obj4 = new Main.PruebaEstatica();
-        Main obj2 = new Main();
-        Main.Prueba obj3 = obj2.new Prueba();
+        Gato miGato = new Gato("Salchicha", 8);
+        Gato otroGato = new Gato("Merluzo", 2);
+//        miGato.meow();
 
 
-
-
-
+//        miGato.maullar(new EmitirSonido() {
+//            @Override
+//            public void meow() {
+//                System.out.println("Wof Wof " + miGato.age);
+//            }
+//        });
+        otroGato.maullar(( hola,  b) -> "Meow" + hola + b);
 
 
 
@@ -84,9 +62,7 @@ public class Main {
 
 //        System.out.println(videogameList.get(0));
 
-        for (int i = 0,  j = 10; i < 10 && j > 0; i++, j--) {  //buble infinito ( si quitas un ; devolvería error)
-            System.out.println(i + " " + j);
-        }
+
 
     }
 
