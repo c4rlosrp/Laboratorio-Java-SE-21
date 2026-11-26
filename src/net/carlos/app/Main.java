@@ -17,7 +17,10 @@ public class Main {
     public static void main(String[] args) {
         myWriter("Rojo", "Azul", "Rosa","Verde", "Amarillo");
 
+        Videogame v1 = new Videogame("Cyberpunk 2077", "CD Projekt Red", Genre.RPG, 50, LocalDate.of(2020, 10, 12), 7.8);
 
+        //serializeVideogame("C:\\Ids\\Prueba\\videogame.ser", v1);
+        System.out.println(deserializeVideogame("C:\\Ids\\Prueba\\videogame.ser"));
 
     }
 
@@ -151,4 +154,29 @@ public class Main {
 //
 //    }
 
+    public static void serializeVideogame (String filePath, Videogame videogame){
+        try (FileOutputStream fos = new FileOutputStream(filePath);
+            ObjectOutputStream oos = new ObjectOutputStream(fos))
+        {
+            oos.writeObject(videogame);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static Videogame deserializeVideogame (String filePath){
+        Videogame videogame = null;
+        try (FileInputStream fis = new FileInputStream(filePath);
+             ObjectInputStream ois = new ObjectInputStream(fis))
+        {
+            videogame = (Videogame) ois.readObject();
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return videogame;
+    }
 }

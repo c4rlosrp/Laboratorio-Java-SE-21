@@ -1,17 +1,18 @@
 package net.carlos.app;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * @author manana
  **/
-public class Videogame implements Comparable<Videogame> {
+public class Videogame implements Comparable<Videogame>, Serializable {
 
     private String title, autor;
     private Genre genre;
     private int espacio;
-    private LocalDate fecha;
+    private transient LocalDate fecha;
     private double ranking;
 
     public Videogame(String title, String autor, Genre genre, int espacio, LocalDate fecha, double ranking) {
